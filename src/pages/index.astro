@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { products } from '../data/products.js';
+---
+
+<Layout>
+  <section class="hero">
+    <div class="container container-sm">
+      <div class="hero-text-container">
+        <h1 class="hero-title">
+          <span class="font-thin">the</span><span class="font-light">XYZ</span>
+        </h1>
+        <p class="font-light hero-subtitle">
+          is a for-soul initiative to launch a thousand tiny projects. We take
+          the minimum-loveable-product approach a little too seriously. We are
+          not a company, we are a bunch of people spread across domains
+          (developers, designers, writers, music lovers, idea guys, analysts,
+          ML/AI experts).
+        </p>
+        <p class="font-light hero-subtitle">
+          At the core, theXYZ is about enjoying the process of building
+          products, caring about the users above anything else, no B.S., and
+          fun. We live by some ground rules: Build fast, Launch early, No
+          premature scaling, No debate over colors and UI, Usability first,
+          and Make it human.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="products">
+    <div class="container">
+      <h3 class="products-title">So far so good</h3>
+      <div class="product-container">
+        {
+          products.map((product) => (
+            <div class="product-item">
+              <a href={product.href} target="_blank">
+                <img src={product.logo} class="logo" alt={product.name} />
+              </a>
+              <div class="product-meta">
+                <h3 class="product-title">
+                  <a href={product.href} target="_blank">{product.name}</a>
+                </h3>
+                <p class="product-desc font-light">{product.desc}</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <div class="container text-center">
+      <h2>Say Hi 👋</h2>
+      <a href="mailto:byxyznet@gmail.com">byxyznet@gmail.com</a>
+    </div>
+  </section>
+</Layout>

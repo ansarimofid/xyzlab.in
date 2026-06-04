@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="80px" viewBox="0 0 80 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61 (89581) - https://sketch.com -->
+    <title>iwish</title>
+    <desc>Created with Sketch.</desc>
+    <g id="playground" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD-Copy-6" transform="translate(-104.000000, -775.000000)" fill-rule="nonzero">
+            <g id="item1-copy" transform="translate(104.000000, 775.000000)">
+                <g id="item-copy">
+                    <g id="Group">
+                        <g id="iwish">
+                            <circle id="Oval" fill="#FFFFFF" cx="40" cy="40" r="40"></circle>
+                            <g id="Group-3" transform="translate(18.000000, 26.000000)" fill="#000000">
+                                <polygon id="Path" points="4.48774929 6.73162393 4.48774929 25.3094017 1.55441595 25.3094017 1.55441595 6.73162393"></polygon>
+                                <polygon id="Path" points="42.6210826 6.73162393 42.6210826 22.3760684 39.6877493 22.3760684 39.6877493 6.73162393"></polygon>
+                                <polygon id="Path" points="26.0538309 26.2871795 22.5763445 13.161959 22.5011556 13.161959 19.1752218 26.2871795 13.6194672 26.2871795 7.42108262 6.73162393 13.0902079 6.73162393 16.6804777 20.007932 16.756254 20.007932 20.0087612 6.73162393 25.2244034 6.73162393 28.5479876 19.9732465 28.6237639 19.9732465 32.2140337 6.73456338 37.7321937 6.73456338 31.5714036 26.2871795"></polygon>
+                                <circle id="Oval" cx="2.53219373" cy="2.82051282" r="1.95555556"></circle>
+                                <circle id="Oval" cx="41.6433048" cy="26.2871795" r="1.95555556"></circle>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

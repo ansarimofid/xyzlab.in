@@ -1,0 +1,62 @@
+---
+import '../styles/global.css';
+
+const {
+  title = 'For-soul initiative to build products that people love.',
+  description = 'Thexyz is an independent collaborative effort to build tiny products that people love. We build fast, ship early, and grow only organically.',
+} = Astro.props;
+
+const ogImage = new URL('/web_preview.jpg', Astro.site).href;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : Astro.url.href;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="/favicon.png" />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="thexyz, applications, indie maker, internet, maker community, indie hacker, lettertoxyz, stumbleonmusic, dulo, iwish, side projects, side products"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonical} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- Pinterest -->
+    <meta name="p:domain_verify" content="44b2af51ac6e53d2f61e1c4b014af4b9" />
+
+    <!-- Extra customization -->
+    <link rel="icon" sizes="192x192" href="/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    <link rel="apple-touch-startup-image" href="/icons/icon-192x192.png" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="theme-color" content="#191919" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:100,300,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
