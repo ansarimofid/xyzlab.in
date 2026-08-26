@@ -3,11 +3,16 @@
 // Each entry becomes /crochet-genie/<key>. Sections carry an `id` so support can
 // link to a single clause, e.g. /crochet-genie/privacy#importing.
 //
-// Anything still unresolved is marked with <span class="legal-todo">TODO: …</span>
-// so it renders visibly and greps cleanly. Do not ship with TODOs on the page.
+// Anything unresolved is marked with <span class="legal-todo">TODO: …</span> so it
+// renders visibly and greps cleanly. There are none right now — keep it that way.
 
-// Single source for the support address — both pages render it from here.
+// Single source for the company details — both pages render them from here.
 const SUPPORT_EMAIL = 'crochetgeniesupport@gmail.com';
+const COMPANY = 'Mockey Pvt. Ltd.';
+const COMPANY_ADDRESS = 'E 173, Galaxy Apartment, PAC, Moradabad, Uttar Pradesh 244001, India';
+// Person named for personal-data questions, as India's DPDP Act expects.
+const DATA_CONTACT = 'Pranay Agarwal';
+const DATA_CONTACT_ROLE = 'Founder';
 
 const mailto = `<a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>`;
 
@@ -38,9 +43,8 @@ export const legalPages = {
         id: 'who-we-are',
         heading: 'Who we are',
         body: `
-          <p>Crochet Genie is made by
-          <span class="legal-todo">TODO: legal entity or trading name, and postal
-          address. Apple requires this too.</span></p>
+          <p>Crochet Genie is made by <strong>${COMPANY}</strong>, registered at
+          ${COMPANY_ADDRESS}.</p>
           <p>Write to us at ${mailto}.</p>
         `,
       },
@@ -135,13 +139,13 @@ export const legalPages = {
         body: `
           <p>The app is provided as it is. We do not promise uninterrupted
           availability or freedom from faults.</p>
-          <p>To the extent the law allows, we are not liable for indirect or
-          consequential loss. Nothing here limits liability for death or personal
-          injury caused by negligence, for fraud, or for anything else that cannot
-          lawfully be limited.</p>
-          <p><span class="legal-todo">TODO: have this paragraph checked once
-          governing law is chosen — the enforceable wording differs by
-          jurisdiction.</span></p>
+          <p>To the extent Indian law allows, we are not liable for indirect or
+          consequential loss — time you spent, yarn you bought, or a piece that did
+          not come out the way you wanted.</p>
+          <p>Nothing here limits liability that cannot lawfully be limited,
+          including for death or personal injury caused by our negligence, and for
+          fraud. Nothing here takes away rights you have as a consumer under Indian
+          law.</p>
         `,
       },
       {
@@ -156,15 +160,18 @@ export const legalPages = {
         id: 'governing-law',
         heading: 'Governing law',
         body: `
-          <p><span class="legal-todo">TODO: governing law and jurisdiction. Likely
-          India if you operate from there — it changes the liability wording
-          above.</span></p>
+          <p>These terms are governed by the laws of India.</p>
+          <p>If we ever have a disagreement we cannot settle between ourselves, it
+          goes to the courts of Moradabad, Uttar Pradesh.</p>
         `,
       },
       {
         id: 'contact',
         heading: 'Contact',
-        body: `<p>${mailto}</p>`,
+        body: `
+          <p>${COMPANY}<br />${COMPANY_ADDRESS}</p>
+          <p>${mailto}</p>
+        `,
       },
     ],
   },
@@ -235,13 +242,23 @@ export const legalPages = {
           <p>We do not store your upload. It is held in a temporary file for the
           length of the request and is gone when the request finishes. We do not write
           it to a database or to object storage, and we do not log its contents.</p>
-          <p>What the AI provider does with it is governed by that provider's own
-          terms, not ours.
-          <span class="legal-todo">TODO: confirm which Google Gemini API terms your
-          key is under — the paid and free tiers differ on whether prompts may be
-          retained or used to improve models — and state the answer here. This is the
-          single most important gap on this page, and the one claim a user could hold
-          you to.</span></p>
+          <p>What happens at Google's end is governed by Google's terms, not ours.
+          We use the <strong>paid</strong> Gemini API. Google's terms for paid
+          services say that Google does not use what we send it — your pattern, any
+          file you upload with it, and the pattern it returns — to improve Google's
+          products, and that it handles all of it as a data processor working on our
+          instructions rather than for its own purposes.</p>
+          <p>Google does log the request for a limited period, to detect and prevent
+          abuse of its service and to make any disclosure the law requires of it.
+          Google says that logged data may be stored or cached in any country where
+          it or its agents have facilities, so your upload may rest briefly on a
+          machine outside India.</p>
+          <p>Google's free tier works differently, and we want you to know the
+          difference: there, uploads are used to improve Google's products, and
+          Google's terms say human reviewers may read and annotate them. We are not
+          on the free tier, and we would update this page before moving to it.</p>
+          <p>Google's terms for the Gemini API:
+          <a href="https://ai.google.dev/gemini-api/terms" rel="noopener" target="_blank">https://ai.google.dev/gemini-api/terms</a>.</p>
         `,
       },
       {
@@ -303,9 +320,7 @@ export const legalPages = {
         body: `
           <p>Depending on where you live, you may have the right to see, correct,
           export or delete the data we hold about you. In practice we hold almost
-          none — but write to ${mailto} and we will respond within
-          <span class="legal-todo">TODO: confirm the response window you want to
-          commit to. 30 days is the usual undertaking.</span></p>
+          none — but write to ${mailto} and we will answer within 30 days.</p>
         `,
       },
       {
@@ -319,7 +334,15 @@ export const legalPages = {
       {
         id: 'contact',
         heading: 'Contact',
-        body: `<p>${mailto}</p>`,
+        body: `
+          <p>Crochet Genie is run by <strong>${COMPANY}</strong>, ${COMPANY_ADDRESS}.
+          We are the ones deciding what happens to your personal data, which under
+          Indian law makes us the data fiduciary for it.</p>
+          <p>India's Digital Personal Data Protection Act asks us to name the person
+          who answers questions about your personal data. That is
+          <strong>${DATA_CONTACT}</strong>, ${DATA_CONTACT_ROLE}, reachable at
+          ${mailto}.</p>
+        `,
       },
     ],
   },
