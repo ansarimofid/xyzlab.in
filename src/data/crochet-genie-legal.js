@@ -3,13 +3,19 @@
 // Each entry becomes /crochet-genie/<key>. Sections carry an `id` so support can
 // link to a single clause, e.g. /crochet-genie/privacy#importing.
 //
-// Anything still unresolved is marked with <span class="legal-todo">TODO: …</span>
-// so it renders visibly and greps cleanly. Do not ship with TODOs on the page.
+// Anything unresolved is marked with <span class="legal-todo">TODO: …</span> so it
+// renders visibly and greps cleanly. There are none right now — keep it that way.
 
-// Single source for the support address — both pages render it from here.
+// Single source for the company details — both pages render them from here.
 const SUPPORT_EMAIL = 'crochetgeniesupport@gmail.com';
+const SUPPORT_PHONE = '+91 72481 31247';
+const COMPANY = 'Mockey Pvt. Ltd.';
+const COMPANY_ADDRESS = 'E 173, Galaxy Apartment, PAC, Moradabad, Uttar Pradesh 244001, India';
+// Person named for personal-data questions, as India's DPDP Act expects.
+const DATA_CONTACT = 'Pranay Agarwal';
 
 const mailto = `<a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>`;
+const tel = `<a href="tel:${SUPPORT_PHONE.replace(/\s/g, '')}">${SUPPORT_PHONE}</a>`;
 
 const LAST_UPDATED = '26 August 2026';
 
@@ -38,11 +44,9 @@ export const legalPages = {
         id: 'who-we-are',
         heading: 'Who we are',
         body: `
-          <p>Crochet Genie is made by
-          <span class="legal-todo">TODO: registered entity or trading name, and a
-          postal address in India. Apple requires both for the App Store
-          listing.</span></p>
-          <p>Write to us at ${mailto}.</p>
+          <p>Crochet Genie is made by <strong>${COMPANY}</strong>, registered at
+          ${COMPANY_ADDRESS}.</p>
+          <p>Write to us at ${mailto}, or call ${tel}.</p>
         `,
       },
       {
@@ -159,14 +163,16 @@ export const legalPages = {
         body: `
           <p>These terms are governed by the laws of India.</p>
           <p>If we ever have a disagreement we cannot settle between ourselves, it
-          goes to the courts of <span class="legal-todo">TODO: the city your business
-          is registered in, e.g. "the courts of Bengaluru".</span></p>
+          goes to the courts of Moradabad, Uttar Pradesh.</p>
         `,
       },
       {
         id: 'contact',
         heading: 'Contact',
-        body: `<p>${mailto}</p>`,
+        body: `
+          <p>${COMPANY}<br />${COMPANY_ADDRESS}</p>
+          <p>${mailto}<br />${tel}</p>
+        `,
       },
     ],
   },
@@ -326,12 +332,12 @@ export const legalPages = {
         id: 'contact',
         heading: 'Contact',
         body: `
-          <p>${mailto}</p>
+          <p>Crochet Genie is run by <strong>${COMPANY}</strong>, ${COMPANY_ADDRESS}.
+          We are the ones deciding what happens to your personal data, which under
+          Indian law makes us the data fiduciary for it.</p>
           <p>India's Digital Personal Data Protection Act asks us to name the person
           who answers questions about your personal data. That is
-          <span class="legal-todo">TODO: name and role. The Act expects a named
-          individual, not only a shared inbox.</span>, reachable at the address
-          above.</p>
+          <strong>${DATA_CONTACT}</strong>, reachable at ${mailto} or on ${tel}.</p>
         `,
       },
     ],
