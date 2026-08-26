@@ -1,0 +1,58 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { legalPages } from '../../data/crochet-genie-legal.js';
+
+// One static page per entry in the data file: /crochet-genie/terms, /crochet-genie/privacy.
+export function getStaticPaths() {
+  return Object.entries(legalPages).map(([pageName, page]) => ({
+    params: { pageName },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+---
+
+<Layout title={page.metaTitle} description={page.metaDescription}>
+  <main class="legal container container-sm">
+    <header class="legal-header">
+      <p class="legal-eyebrow font-light">Crochet Genie</p>
+      <h1 class="legal-title font-thin">{page.title}</h1>
+      <p class="legal-lede font-light">{page.lede}</p>
+      <p class="legal-updated font-light">Last updated: {page.lastUpdated}</p>
+    </header>
+
+    <nav class="legal-toc font-light" aria-label="On this page">
+      <h2 class="legal-toc-title">On this page</h2>
+      <ol>
+        {
+          page.sections.map((section) => (
+            <li><a href={`#${section.id}`}>{section.heading}</a></li>
+          ))
+        }
+      </ol>
+    </nav>
+
+    {
+      page.sections.map((section) => (
+        <section class="legal-section" id={section.id}>
+          <h2 class="legal-heading">
+            {section.heading}
+            <a class="legal-anchor" href={`#${section.id}`} aria-label={`Link to “${section.heading}”`}>#</a>
+          </h2>
+          <div class="legal-body font-light" set:html={section.body} />
+        </section>
+      ))
+    }
+
+    <footer class="legal-footer font-light">
+      <p>
+        Questions about this page? Write to
+        <a href={`mailto:${page.supportEmail}`}>{page.supportEmail}</a>.
+      </p>
+      <p>
+        See also our <a href={page.sibling.href}>{page.sibling.label}</a>.
+      </p>
+    </footer>
+  </main>
+</Layout>
