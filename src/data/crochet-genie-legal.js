@@ -8,14 +8,13 @@
 
 // Single source for the company details — both pages render them from here.
 const SUPPORT_EMAIL = 'crochetgeniesupport@gmail.com';
-const SUPPORT_PHONE = '+91 72481 31247';
 const COMPANY = 'Mockey Pvt. Ltd.';
 const COMPANY_ADDRESS = 'E 173, Galaxy Apartment, PAC, Moradabad, Uttar Pradesh 244001, India';
 // Person named for personal-data questions, as India's DPDP Act expects.
 const DATA_CONTACT = 'Pranay Agarwal';
+const DATA_CONTACT_ROLE = 'Founder';
 
 const mailto = `<a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>`;
-const tel = `<a href="tel:${SUPPORT_PHONE.replace(/\s/g, '')}">${SUPPORT_PHONE}</a>`;
 
 const LAST_UPDATED = '26 August 2026';
 
@@ -46,7 +45,7 @@ export const legalPages = {
         body: `
           <p>Crochet Genie is made by <strong>${COMPANY}</strong>, registered at
           ${COMPANY_ADDRESS}.</p>
-          <p>Write to us at ${mailto}, or call ${tel}.</p>
+          <p>Write to us at ${mailto}.</p>
         `,
       },
       {
@@ -171,7 +170,7 @@ export const legalPages = {
         heading: 'Contact',
         body: `
           <p>${COMPANY}<br />${COMPANY_ADDRESS}</p>
-          <p>${mailto}<br />${tel}</p>
+          <p>${mailto}</p>
         `,
       },
     ],
@@ -244,16 +243,20 @@ export const legalPages = {
           length of the request and is gone when the request finishes. We do not write
           it to a database or to object storage, and we do not log its contents.</p>
           <p>What happens at Google's end is governed by Google's terms, not ours.
-          We use the <strong>paid</strong> Gemini API. Under Google's terms for its
-          paid services, Google does not use what we send it — your pattern, and the
-          pattern it returns — to train or improve its models, and its reviewers do
-          not read it for that purpose. Google may still keep a record of the request
-          for a limited period, to catch abuse of its service and to meet its own
-          legal obligations.</p>
-          <p>Google's free tier works differently. On the free tier, uploads can be
-          used to improve Google's products and can be read by human reviewers. We
-          are not on the free tier, and we would update this page before moving to
-          it.</p>
+          We use the <strong>paid</strong> Gemini API. Google's terms for paid
+          services say that Google does not use what we send it — your pattern, any
+          file you upload with it, and the pattern it returns — to improve Google's
+          products, and that it handles all of it as a data processor working on our
+          instructions rather than for its own purposes.</p>
+          <p>Google does log the request for a limited period, to detect and prevent
+          abuse of its service and to make any disclosure the law requires of it.
+          Google says that logged data may be stored or cached in any country where
+          it or its agents have facilities, so your upload may rest briefly on a
+          machine outside India.</p>
+          <p>Google's free tier works differently, and we want you to know the
+          difference: there, uploads are used to improve Google's products, and
+          Google's terms say human reviewers may read and annotate them. We are not
+          on the free tier, and we would update this page before moving to it.</p>
           <p>Google's terms for the Gemini API:
           <a href="https://ai.google.dev/gemini-api/terms" rel="noopener" target="_blank">https://ai.google.dev/gemini-api/terms</a>.</p>
         `,
@@ -337,7 +340,8 @@ export const legalPages = {
           Indian law makes us the data fiduciary for it.</p>
           <p>India's Digital Personal Data Protection Act asks us to name the person
           who answers questions about your personal data. That is
-          <strong>${DATA_CONTACT}</strong>, reachable at ${mailto} or on ${tel}.</p>
+          <strong>${DATA_CONTACT}</strong>, ${DATA_CONTACT_ROLE}, reachable at
+          ${mailto}.</p>
         `,
       },
     ],
