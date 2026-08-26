@@ -696,3 +696,31 @@ section.contact {
     display: none;
   }
 }
+
+/* Collapsible full licence text on the credits page. */
+.legal-licence {
+  margin: 12px 0 20px;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+.legal-licence summary {
+  cursor: pointer;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.legal-licence summary:hover {
+  color: white;
+}
+
+.legal-licence p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.legal-licence p:first-of-type {
+  margin-top: 14px;
+}

@@ -26,7 +26,10 @@ export const legalPages = {
       'The terms you agree to when you use Crochet Genie: what you may do with the app, what you promise about the patterns you import, and what we do not promise back.',
     lastUpdated: LAST_UPDATED,
     supportEmail: SUPPORT_EMAIL,
-    sibling: { href: '/crochet-genie/privacy', label: 'Privacy Policy' },
+    siblings: [
+      { href: '/crochet-genie/privacy', label: 'Privacy Policy' },
+      { href: '/crochet-genie/credits', label: 'Credits' },
+    ],
     lede: `Crochet Genie is an iOS app for following crochet patterns and importing
       the ones you already own. These are the terms you agree to when you use it.`,
     sections: [
@@ -180,49 +183,68 @@ export const legalPages = {
     title: 'Privacy Policy',
     metaTitle: 'Crochet Genie — Privacy Policy',
     metaDescription:
-      'Crochet Genie has no analytics, no advertising, no tracking and no third-party SDKs. Your projects never leave your phone. Patterns you import do — here is exactly where they go.',
+      'Crochet Genie has no analytics, no crash reporting, no advertising and no tracking. Your projects stay on your phone. Patterns you import go to our service and on to the Google Gemini API — here is exactly what happens.',
     lastUpdated: LAST_UPDATED,
     supportEmail: SUPPORT_EMAIL,
-    sibling: { href: '/crochet-genie/terms', label: 'Terms of Use' },
-    lede: `What Crochet Genie collects, what it does not, and the one thing that
-      leaves your phone.`,
+    siblings: [
+      { href: '/crochet-genie/terms', label: 'Terms of Use' },
+      { href: '/crochet-genie/credits', label: 'Credits' },
+    ],
+    lede: `What Crochet Genie collects, what it does not, and what leaves your
+      phone when you import a pattern.`,
     sections: [
       {
         id: 'short-version',
         heading: 'The short version',
         body: `
-          <p>Crochet Genie has no analytics, no advertising, no tracking and no
-          third-party SDKs of any kind. Your projects never leave your phone. Signing
-          in never leaves your phone either.</p>
-          <p>One thing does leave: a pattern you ask us to import. That part is
-          explained in full <a href="#importing">below</a>.</p>
+          <p>Crochet Genie has no analytics, no crash reporting, no advertising, no
+          tracking and no third-party SDKs of any kind. Your projects, counts and
+          patterns live on your phone and nowhere else. You have no account on any
+          server of ours, because we do not run one.</p>
+          <p>Two things do leave your phone. A pattern you ask us to
+          <a href="#importing">import</a>, and — while you are signed in — an
+          anonymous identifier that stops one person running thousands of imports.
+          Both are explained in full below.</p>
         `,
       },
       {
         id: 'on-your-device',
         heading: 'What stays on your device',
         body: `
-          <p>Your projects, your round counts, your streak and your saved patterns are
-          stored on your phone and are never sent anywhere. There is no account
-          server, no sync, and no backup held by us.</p>
+          <p>These live only on your phone, in the app's own storage:</p>
+          <ul>
+            <li>your projects, and the row and round counts inside them</li>
+            <li>patterns you have saved</li>
+            <li>patterns you have imported, and their thumbnails</li>
+            <li>your streak</li>
+            <li>every preference and setting</li>
+          </ul>
+          <p>None of it is sent anywhere. There is no cloud sync and no account on
+          any server of ours.</p>
+          <p>Signing in is not a backup. If you lose the phone, that work is gone —
+          we never had a copy of it to give back to you.</p>
         `,
       },
       {
         id: 'signing-in',
         heading: 'Signing in',
         body: `
-          <p>You can sign in with Apple. Apple gives the app your name and your email
-          address — or Apple's private relay address, if you chose to hide your
-          email.</p>
-          <p><strong>That information does not leave your device.</strong> It is
-          written to your device's Keychain so the app can greet you and keep your
-          work together. We have no copy of it, because we have no server that stores
-          accounts.</p>
-          <p>Sign in with Apple is the only way to sign in. There is no Google
-          sign-in, no password, and no emailed link.</p>
-          <p>To end the relationship entirely: clear your data in Settings inside the
-          app, then revoke the app under iOS Settings → your name → Sign in with
-          Apple.</p>
+          <p>You can sign in with Apple. It is the only way to sign in — no Google
+          sign-in, no password, no emailed link — and most of the app works without
+          signing in at all.</p>
+          <p>Apple hands the app two different things, and they are worth separating.</p>
+          <p><strong>Your name and email address</strong> — or Apple's private relay
+          address, if you chose to hide your email — go into your device's Keychain
+          and <strong>stay there</strong>. We have no copy, because we have no server
+          that stores accounts.</p>
+          <p><strong>A subject identifier</strong>, which is an opaque string Apple
+          uses to mean "you" to this app and to no other app. While you are signed in,
+          import requests carry it in a header called <code>X-User</code>. We use it
+          for exactly one thing: counting imports, so a single person cannot exhaust
+          the service for everyone else. It is not stored on our server. It is never
+          used for advertising, and never to follow you anywhere.</p>
+          <p><a href="#deleting-everything">Deleting everything</a> explains how to
+          undo all of this.</p>
         `,
       },
       {
@@ -230,18 +252,27 @@ export const legalPages = {
         heading: 'Importing a pattern',
         body: `
           <p>This is the part worth reading properly.</p>
-          <p>When you import, the PDF, photograph or web address you provide is sent
-          to our import service at <code>api.crochetgenie.app</code> (hosted on
-          Render), and from there to a third-party AI provider — currently
-          <strong>Google (Gemini)</strong> — which reads it and returns a structured
-          pattern. We can switch that provider to Anthropic (Claude); if we do, we
-          will update this page.</p>
-          <p>So, plainly: <strong>a document you upload leaves your phone and is read
-          by a company that is not us.</strong> If it contains anything personal, that
-          goes with it.</p>
-          <p>We do not store your upload. It is held in a temporary file for the
-          length of the request and is gone when the request finishes. We do not write
-          it to a database or to object storage, and we do not log its contents.</p>
+          <p>There are three ways to import, and all three send something to our
+          import service at <code>crochet-genie.xyzlab.in</code>:</p>
+          <ul>
+            <li><strong>A PDF.</strong> The file is uploaded.</li>
+            <li><strong>A web link.</strong> The address you paste is sent, and the
+            page at the other end is fetched and read.</li>
+            <li><strong>A photo from your library.</strong> The image is uploaded.
+            It might be a picture of a written pattern, which gets transcribed — or a
+            picture of a finished object, for which an original pattern is
+            designed.</li>
+          </ul>
+          <p>Our service forwards what you sent to the <strong>Google Gemini
+          API</strong>, which reads it and returns a structured pattern. We can switch
+          that to Anthropic (Claude) instead; if we do, we will update this page
+          first.</p>
+          <p>So, plainly: <strong>what you upload leaves your phone and is read by a
+          company that is not us.</strong> If your PDF or your photograph has anything
+          personal in it, that goes too.</p>
+          <p>Our own service keeps nothing. There is no database and no user record.
+          Your upload is held for the length of one request and discarded when the
+          request finishes, and we never log what was in it.</p>
           <p>What happens at Google's end is governed by Google's terms, not ours.
           We use the <strong>paid</strong> Gemini API. Google's terms for paid
           services say that Google does not use what we send it — your pattern, any
@@ -284,9 +315,10 @@ export const legalPages = {
         id: 'pattern-photographs',
         heading: 'Pattern photographs',
         body: `
-          <p>Photographs on our patterns are served from object storage in Paris,
-          France (Scaleway). Requesting one reveals your IP address to that host, as
-          requesting any image on the internet does.</p>
+          <p>Photographs on our patterns load from <code>assets.xyzlab.in</code>,
+          which is object storage at Scaleway in Paris, France. Requesting one reveals
+          your IP address to that host, as requesting any image on the internet
+          does.</p>
         `,
       },
       {
@@ -297,9 +329,12 @@ export const legalPages = {
             <li><strong>No analytics or telemetry.</strong> The app has no
             third-party packages at all — not Firebase, not Clarity, not Sentry,
             none.</li>
+            <li><strong>No crash reporting.</strong> If the app falls over, your
+            phone does not tell us about it.</li>
             <li><strong>No advertising</strong>, and no advertising identifier.</li>
             <li><strong>No tracking</strong> across other apps or websites.</li>
-            <li><strong>No selling or sharing</strong> of personal data.</li>
+            <li><strong>No selling or sharing</strong> of your data with anyone
+            beyond the services named on this page.</li>
             <li><strong>No marketing email.</strong> We have no email list.</li>
           </ul>
         `,
@@ -308,9 +343,15 @@ export const legalPages = {
         id: 'deleting-everything',
         heading: 'Deleting everything',
         body: `
-          <p>Settings → "Delete account and everything in it" clears your projects and
-          signs you out. Because nothing is held on our servers, that is genuinely
-          everything.</p>
+          <p>Settings → "Delete account and everything in it" removes all of this
+          from the device: every project and the counts inside it, every imported
+          pattern and its thumbnail, every saved pattern, and every preference. It
+          signs you out at the same time.</p>
+          <p>Because no account record exists on any server of ours, that is the
+          entire deletion. There is nothing held elsewhere for us to go and remove.</p>
+          <p>One thing is separate, and only you can do it: revoking the app's Sign in
+          with Apple access, under iOS Settings → Apple Account → Sign in with
+          Apple.</p>
           <p>You can also write to ${mailto}.</p>
         `,
       },
@@ -342,6 +383,105 @@ export const legalPages = {
           who answers questions about your personal data. That is
           <strong>${DATA_CONTACT}</strong>, ${DATA_CONTACT_ROLE}, reachable at
           ${mailto}.</p>
+        `,
+      },
+    ],
+  },
+
+  credits: {
+    title: 'Credits',
+    metaTitle: 'Crochet Genie — Credits',
+    metaDescription:
+      'Attribution for the open-source icons and typefaces Crochet Genie uses, for the tutorial films, and for the patterns in the catalogue.',
+    lastUpdated: LAST_UPDATED,
+    supportEmail: SUPPORT_EMAIL,
+    siblings: [
+      { href: '/crochet-genie/terms', label: 'Terms of Use' },
+      { href: '/crochet-genie/privacy', label: 'Privacy Policy' },
+    ],
+    lede: `Crochet Genie is built on other people's work. This page credits it and
+      records the licences that work is used under.`,
+    sections: [
+      {
+        id: 'icons',
+        heading: 'Icons',
+        body: `
+          <p><strong>Phosphor Icons</strong> — the tab bar glyphs.<br />
+          Copyright (c) 2023 Phosphor Icons. Used under the MIT License.<br />
+          <a href="https://phosphoricons.com" rel="noopener" target="_blank">phosphoricons.com</a></p>
+          <details class="legal-licence">
+            <summary>Full MIT License text</summary>
+            <p>Copyright (c) 2023 Phosphor Icons</p>
+            <p>Permission is hereby granted, free of charge, to any person obtaining
+            a copy of this software and associated documentation files (the
+            "Software"), to deal in the Software without restriction, including
+            without limitation the rights to use, copy, modify, merge, publish,
+            distribute, sublicense, and/or sell copies of the Software, and to permit
+            persons to whom the Software is furnished to do so, subject to the
+            following conditions:</p>
+            <p>The above copyright notice and this permission notice shall be
+            included in all copies or substantial portions of the Software.</p>
+            <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+            EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+            MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+            IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+            CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+            TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+            SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+          </details>
+          <p><strong>Solar Icon Set</strong> by 480 Design — the play button.<br />
+          Used under the Creative Commons Attribution 4.0 International licence
+          (CC BY 4.0).<br />
+          <a href="https://github.com/480-Design/Solar-Icon-Set" rel="noopener" target="_blank">github.com/480-Design/Solar-Icon-Set</a>
+          · <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener" target="_blank">Licence</a></p>
+        `,
+      },
+      {
+        id: 'typefaces',
+        heading: 'Typefaces',
+        body: `
+          <p>All four are used under the
+          <a href="https://openfontlicense.org/open-font-license-official-text/" rel="noopener" target="_blank">SIL Open Font License, Version 1.1</a>.</p>
+          <ul>
+            <li><strong>Fraunces</strong> — Copyright 2018 The Fraunces Project
+            Authors
+            (<a href="https://github.com/undercasetype/Fraunces" rel="noopener" target="_blank">github.com/undercasetype/Fraunces</a>)</li>
+            <li><strong>Hanken Grotesk</strong> — Copyright 2021 The Hanken Grotesk
+            Project Authors
+            (<a href="https://github.com/marcologous/hanken-grotesk" rel="noopener" target="_blank">github.com/marcologous/hanken-grotesk</a>)</li>
+            <li><strong>DM Mono</strong> — Copyright 2020 The DM Mono Project Authors
+            (<a href="https://github.com/googlefonts/dm-mono" rel="noopener" target="_blank">github.com/googlefonts/dm-mono</a>)</li>
+            <li><strong>Grand Hotel</strong> — Copyright (c) 2012 Brian J.
+            Bonislawsky and Jim Lyles, DBA Astigmatic (AOETI), with Reserved Font
+            Name "Grand Hotel"</li>
+          </ul>
+        `,
+      },
+      {
+        id: 'films',
+        heading: 'Films',
+        body: `
+          <p>Tutorial films play through YouTube's embedded player. Each film is the
+          work of the channel that made it and belongs to that channel. We do not
+          own, host, or claim any rights in them.</p>
+          <p>Use of the player is subject to the
+          <a href="https://www.youtube.com/t/terms" rel="noopener" target="_blank">YouTube Terms of Service</a>.</p>
+        `,
+      },
+      {
+        id: 'patterns',
+        heading: 'Patterns',
+        body: `
+          <p>Every pattern in the Crochet Genie catalogue is our own original work.
+          None of it is adapted from another designer's pattern.</p>
+        `,
+      },
+      {
+        id: 'contact',
+        heading: 'Corrections',
+        body: `
+          <p>If something here is attributed wrongly, or is missing, tell us at
+          ${mailto} and we will fix it.</p>
         `,
       },
     ],
