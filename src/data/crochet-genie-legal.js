@@ -6,9 +6,8 @@
 // Anything still unresolved is marked with <span class="legal-todo">TODO: …</span>
 // so it renders visibly and greps cleanly. Do not ship with TODOs on the page.
 
-// NOTE: supplied as "corchet…", not "crochet…". Kept exactly as given rather than
-// guessed at — if it is a typo, fix it here and both pages update.
-const SUPPORT_EMAIL = 'corchetgeniesupport@gmail.com';
+// Single source for the support address — both pages render it from here.
+const SUPPORT_EMAIL = 'crochetgeniesupport@gmail.com';
 
 const mailto = `<a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>`;
 
