@@ -59,6 +59,18 @@ export const legalPages = {
         `,
       },
       {
+        id: 'how-old',
+        heading: 'How old you have to be',
+        body: `
+          <p>You need to be 18 or older to use Crochet Genie.</p>
+          <p>That is not us being precious about crochet. Importing a pattern runs
+          through Google's Gemini API, and Google's terms for it say we must not
+          offer it inside an app that is aimed at — or likely to be used by — people
+          under 18. The limit therefore covers the whole app, not just the import
+          button.</p>
+        `,
+      },
+      {
         id: 'your-account',
         heading: 'Your account',
         body: `
@@ -327,8 +339,14 @@ export const legalPages = {
         id: 'children',
         heading: 'Children',
         body: `
-          <p>Crochet Genie is not directed at children under 13, and we do not
-          knowingly collect their data.</p>
+          <p>Crochet Genie is for adults. You need to be 18 or older to use it, and
+          we do not knowingly collect data from anyone younger.</p>
+          <p>The reason sits in the import pipeline. Google's terms for the Gemini
+          API say it must not be used inside an app directed at, or likely to be
+          accessed by, people under 18.</p>
+          <p>If you think a child has been using the app, their projects are on the
+          device and nowhere else — clearing the data in Settings removes them.
+          Write to ${mailto} if you would like help with that.</p>
         `,
       },
       {
