@@ -180,49 +180,65 @@ export const legalPages = {
     title: 'Privacy Policy',
     metaTitle: 'Crochet Genie — Privacy Policy',
     metaDescription:
-      'Crochet Genie has no analytics, no advertising, no tracking and no third-party SDKs. Your projects never leave your phone. Patterns you import do — here is exactly where they go.',
+      'Crochet Genie has no analytics, no crash reporting, no advertising and no tracking. Your projects stay on your phone. Patterns you import go to our service and on to the Google Gemini API — here is exactly what happens.',
     lastUpdated: LAST_UPDATED,
     supportEmail: SUPPORT_EMAIL,
     sibling: { href: '/crochet-genie/terms', label: 'Terms of Use' },
-    lede: `What Crochet Genie collects, what it does not, and the one thing that
-      leaves your phone.`,
+    lede: `What Crochet Genie collects, what it does not, and what leaves your
+      phone when you import a pattern.`,
     sections: [
       {
         id: 'short-version',
         heading: 'The short version',
         body: `
-          <p>Crochet Genie has no analytics, no advertising, no tracking and no
-          third-party SDKs of any kind. Your projects never leave your phone. Signing
-          in never leaves your phone either.</p>
-          <p>One thing does leave: a pattern you ask us to import. That part is
-          explained in full <a href="#importing">below</a>.</p>
+          <p>Crochet Genie has no analytics, no crash reporting, no advertising, no
+          tracking and no third-party SDKs of any kind. Your projects, counts and
+          patterns live on your phone and nowhere else. You have no account on any
+          server of ours, because we do not run one.</p>
+          <p>Two things do leave your phone. A pattern you ask us to
+          <a href="#importing">import</a>, and — while you are signed in — an
+          anonymous identifier that stops one person running thousands of imports.
+          Both are explained in full below.</p>
         `,
       },
       {
         id: 'on-your-device',
         heading: 'What stays on your device',
         body: `
-          <p>Your projects, your round counts, your streak and your saved patterns are
-          stored on your phone and are never sent anywhere. There is no account
-          server, no sync, and no backup held by us.</p>
+          <p>These live only on your phone, in the app's own storage:</p>
+          <ul>
+            <li>your projects, and the row and round counts inside them</li>
+            <li>patterns you have saved</li>
+            <li>patterns you have imported, and their thumbnails</li>
+            <li>your streak</li>
+            <li>every preference and setting</li>
+          </ul>
+          <p>None of it is sent anywhere. There is no cloud sync and no account on
+          any server of ours.</p>
+          <p>Signing in is not a backup. If you lose the phone, that work is gone —
+          we never had a copy of it to give back to you.</p>
         `,
       },
       {
         id: 'signing-in',
         heading: 'Signing in',
         body: `
-          <p>You can sign in with Apple. Apple gives the app your name and your email
-          address — or Apple's private relay address, if you chose to hide your
-          email.</p>
-          <p><strong>That information does not leave your device.</strong> It is
-          written to your device's Keychain so the app can greet you and keep your
-          work together. We have no copy of it, because we have no server that stores
-          accounts.</p>
-          <p>Sign in with Apple is the only way to sign in. There is no Google
-          sign-in, no password, and no emailed link.</p>
-          <p>To end the relationship entirely: clear your data in Settings inside the
-          app, then revoke the app under iOS Settings → your name → Sign in with
-          Apple.</p>
+          <p>You can sign in with Apple. It is the only way to sign in — no Google
+          sign-in, no password, no emailed link — and most of the app works without
+          signing in at all.</p>
+          <p>Apple hands the app two different things, and they are worth separating.</p>
+          <p><strong>Your name and email address</strong> — or Apple's private relay
+          address, if you chose to hide your email — go into your device's Keychain
+          and <strong>stay there</strong>. We have no copy, because we have no server
+          that stores accounts.</p>
+          <p><strong>A subject identifier</strong>, which is an opaque string Apple
+          uses to mean "you" to this app and to no other app. While you are signed in,
+          import requests carry it in a header called <code>X-User</code>. We use it
+          for exactly one thing: counting imports, so a single person cannot exhaust
+          the service for everyone else. It is not stored on our server. It is never
+          used for advertising, and never to follow you anywhere.</p>
+          <p><a href="#deleting-everything">Deleting everything</a> explains how to
+          undo all of this.</p>
         `,
       },
       {
@@ -230,18 +246,27 @@ export const legalPages = {
         heading: 'Importing a pattern',
         body: `
           <p>This is the part worth reading properly.</p>
-          <p>When you import, the PDF, photograph or web address you provide is sent
-          to our import service at <code>api.crochetgenie.app</code> (hosted on
-          Render), and from there to a third-party AI provider — currently
-          <strong>Google (Gemini)</strong> — which reads it and returns a structured
-          pattern. We can switch that provider to Anthropic (Claude); if we do, we
-          will update this page.</p>
-          <p>So, plainly: <strong>a document you upload leaves your phone and is read
-          by a company that is not us.</strong> If it contains anything personal, that
-          goes with it.</p>
-          <p>We do not store your upload. It is held in a temporary file for the
-          length of the request and is gone when the request finishes. We do not write
-          it to a database or to object storage, and we do not log its contents.</p>
+          <p>There are three ways to import, and all three send something to our
+          import service at <code>crochet-genie.xyzlab.in</code>:</p>
+          <ul>
+            <li><strong>A PDF.</strong> The file is uploaded.</li>
+            <li><strong>A web link.</strong> The address you paste is sent, and the
+            page at the other end is fetched and read.</li>
+            <li><strong>A photo from your library.</strong> The image is uploaded.
+            It might be a picture of a written pattern, which gets transcribed — or a
+            picture of a finished object, for which an original pattern is
+            designed.</li>
+          </ul>
+          <p>Our service forwards what you sent to the <strong>Google Gemini
+          API</strong>, which reads it and returns a structured pattern. We can switch
+          that to Anthropic (Claude) instead; if we do, we will update this page
+          first.</p>
+          <p>So, plainly: <strong>what you upload leaves your phone and is read by a
+          company that is not us.</strong> If your PDF or your photograph has anything
+          personal in it, that goes too.</p>
+          <p>Our own service keeps nothing. There is no database and no user record.
+          Your upload is held for the length of one request and discarded when the
+          request finishes, and we never log what was in it.</p>
           <p>What happens at Google's end is governed by Google's terms, not ours.
           We use the <strong>paid</strong> Gemini API. Google's terms for paid
           services say that Google does not use what we send it — your pattern, any
@@ -284,9 +309,10 @@ export const legalPages = {
         id: 'pattern-photographs',
         heading: 'Pattern photographs',
         body: `
-          <p>Photographs on our patterns are served from object storage in Paris,
-          France (Scaleway). Requesting one reveals your IP address to that host, as
-          requesting any image on the internet does.</p>
+          <p>Photographs on our patterns load from <code>assets.xyzlab.in</code>,
+          which is object storage at Scaleway in Paris, France. Requesting one reveals
+          your IP address to that host, as requesting any image on the internet
+          does.</p>
         `,
       },
       {
@@ -297,9 +323,12 @@ export const legalPages = {
             <li><strong>No analytics or telemetry.</strong> The app has no
             third-party packages at all — not Firebase, not Clarity, not Sentry,
             none.</li>
+            <li><strong>No crash reporting.</strong> If the app falls over, your
+            phone does not tell us about it.</li>
             <li><strong>No advertising</strong>, and no advertising identifier.</li>
             <li><strong>No tracking</strong> across other apps or websites.</li>
-            <li><strong>No selling or sharing</strong> of personal data.</li>
+            <li><strong>No selling or sharing</strong> of your data with anyone
+            beyond the services named on this page.</li>
             <li><strong>No marketing email.</strong> We have no email list.</li>
           </ul>
         `,
@@ -308,9 +337,15 @@ export const legalPages = {
         id: 'deleting-everything',
         heading: 'Deleting everything',
         body: `
-          <p>Settings → "Delete account and everything in it" clears your projects and
-          signs you out. Because nothing is held on our servers, that is genuinely
-          everything.</p>
+          <p>Settings → "Delete account and everything in it" removes all of this
+          from the device: every project and the counts inside it, every imported
+          pattern and its thumbnail, every saved pattern, and every preference. It
+          signs you out at the same time.</p>
+          <p>Because no account record exists on any server of ours, that is the
+          entire deletion. There is nothing held elsewhere for us to go and remove.</p>
+          <p>One thing is separate, and only you can do it: revoking the app's Sign in
+          with Apple access, under iOS Settings → Apple Account → Sign in with
+          Apple.</p>
           <p>You can also write to ${mailto}.</p>
         `,
       },
