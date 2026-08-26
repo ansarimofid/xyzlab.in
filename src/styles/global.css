@@ -506,3 +506,193 @@ section.contact {
     margin-top: 24px;
   }
 }
+/**
+ * Crochet Genie legal pages (/crochet-genie/terms, /crochet-genie/privacy)
+ */
+
+.legal {
+  padding-top: 96px;
+  padding-bottom: 96px;
+  max-width: 720px;
+}
+
+.legal-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 32px;
+}
+
+.legal-eyebrow {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.legal-title {
+  font-size: 56px;
+  line-height: 1.05;
+  margin: 12px 0 0;
+}
+
+.legal-lede {
+  font-size: 18px;
+  line-height: 1.55;
+  margin: 20px 0 0;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.legal-updated {
+  margin: 24px 0 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.legal-toc {
+  margin: 40px 0 8px;
+}
+
+.legal-toc-title {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  padding-left: 8px;
+  border-left: 2px solid rgba(255, 255, 255, 0.4);
+  margin: 0 0 16px;
+}
+
+.legal-toc ol {
+  margin: 0;
+  padding-left: 20px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.legal-toc li {
+  margin-bottom: 6px;
+}
+
+.legal-toc a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+
+.legal-toc a:hover,
+.legal-toc a:focus {
+  text-decoration: underline;
+}
+
+.legal-section {
+  margin-top: 48px;
+  scroll-margin-top: 24px;
+}
+
+.legal-heading {
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0 0 12px;
+}
+
+.legal-anchor {
+  margin-left: 10px;
+  font-size: 18px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.35);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.legal-heading:hover .legal-anchor,
+.legal-anchor:focus {
+  opacity: 1;
+}
+
+.legal-body {
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.legal-body p {
+  margin: 0 0 16px;
+}
+
+.legal-body p:last-child,
+.legal-body ul:last-child {
+  margin-bottom: 0;
+}
+
+.legal-body ul {
+  margin: 0 0 16px;
+  padding-left: 20px;
+}
+
+.legal-body li {
+  margin-bottom: 8px;
+}
+
+.legal-body a {
+  color: white;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  overflow-wrap: anywhere;
+}
+
+.legal-body strong {
+  font-weight: 700;
+  color: white;
+}
+
+.legal-body code {
+  font-size: 15px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.legal-body blockquote {
+  margin: 24px 0;
+  padding: 16px 20px;
+  border-left: 2px solid white;
+  background-color: rgba(255, 255, 255, 0.06);
+  color: white;
+}
+
+/* Unresolved facts. Loud on purpose — nothing should ship with one of these. */
+.legal-todo {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 4px 8px;
+  border: 1px dashed #ffb347;
+  border-radius: 3px;
+  color: #ffb347;
+  font-size: 15px;
+}
+
+.legal-footer {
+  margin-top: 64px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.legal-footer p {
+  margin: 0 0 8px;
+}
+
+@media screen and (max-width: 540px) {
+  .legal {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .legal-title {
+    font-size: 38px;
+  }
+
+  .legal-anchor {
+    display: none;
+  }
+}
