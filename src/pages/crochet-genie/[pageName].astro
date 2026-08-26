@@ -51,7 +51,9 @@ const { page } = Astro.props;
         <a href={`mailto:${page.supportEmail}`}>{page.supportEmail}</a>.
       </p>
       <p>
-        See also our <a href={page.sibling.href}>{page.sibling.label}</a>.
+        See also our {page.siblings.map((s, i) => (
+          <><Fragment>{i === 0 ? '' : i === page.siblings.length - 1 ? ' and ' : ', '}</Fragment><a href={s.href}>{s.label}</a></>
+        ))}.
       </p>
     </footer>
   </main>

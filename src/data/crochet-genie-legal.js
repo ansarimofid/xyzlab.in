@@ -26,7 +26,10 @@ export const legalPages = {
       'The terms you agree to when you use Crochet Genie: what you may do with the app, what you promise about the patterns you import, and what we do not promise back.',
     lastUpdated: LAST_UPDATED,
     supportEmail: SUPPORT_EMAIL,
-    sibling: { href: '/crochet-genie/privacy', label: 'Privacy Policy' },
+    siblings: [
+      { href: '/crochet-genie/privacy', label: 'Privacy Policy' },
+      { href: '/crochet-genie/credits', label: 'Credits' },
+    ],
     lede: `Crochet Genie is an iOS app for following crochet patterns and importing
       the ones you already own. These are the terms you agree to when you use it.`,
     sections: [
@@ -183,7 +186,10 @@ export const legalPages = {
       'Crochet Genie has no analytics, no crash reporting, no advertising and no tracking. Your projects stay on your phone. Patterns you import go to our service and on to the Google Gemini API — here is exactly what happens.',
     lastUpdated: LAST_UPDATED,
     supportEmail: SUPPORT_EMAIL,
-    sibling: { href: '/crochet-genie/terms', label: 'Terms of Use' },
+    siblings: [
+      { href: '/crochet-genie/terms', label: 'Terms of Use' },
+      { href: '/crochet-genie/credits', label: 'Credits' },
+    ],
     lede: `What Crochet Genie collects, what it does not, and what leaves your
       phone when you import a pattern.`,
     sections: [
@@ -377,6 +383,105 @@ export const legalPages = {
           who answers questions about your personal data. That is
           <strong>${DATA_CONTACT}</strong>, ${DATA_CONTACT_ROLE}, reachable at
           ${mailto}.</p>
+        `,
+      },
+    ],
+  },
+
+  credits: {
+    title: 'Credits',
+    metaTitle: 'Crochet Genie — Credits',
+    metaDescription:
+      'Attribution for the open-source icons and typefaces Crochet Genie uses, for the tutorial films, and for the patterns in the catalogue.',
+    lastUpdated: LAST_UPDATED,
+    supportEmail: SUPPORT_EMAIL,
+    siblings: [
+      { href: '/crochet-genie/terms', label: 'Terms of Use' },
+      { href: '/crochet-genie/privacy', label: 'Privacy Policy' },
+    ],
+    lede: `Crochet Genie is built on other people's work. This page credits it and
+      records the licences that work is used under.`,
+    sections: [
+      {
+        id: 'icons',
+        heading: 'Icons',
+        body: `
+          <p><strong>Phosphor Icons</strong> — the tab bar glyphs.<br />
+          Copyright (c) 2023 Phosphor Icons. Used under the MIT License.<br />
+          <a href="https://phosphoricons.com" rel="noopener" target="_blank">phosphoricons.com</a></p>
+          <details class="legal-licence">
+            <summary>Full MIT License text</summary>
+            <p>Copyright (c) 2023 Phosphor Icons</p>
+            <p>Permission is hereby granted, free of charge, to any person obtaining
+            a copy of this software and associated documentation files (the
+            "Software"), to deal in the Software without restriction, including
+            without limitation the rights to use, copy, modify, merge, publish,
+            distribute, sublicense, and/or sell copies of the Software, and to permit
+            persons to whom the Software is furnished to do so, subject to the
+            following conditions:</p>
+            <p>The above copyright notice and this permission notice shall be
+            included in all copies or substantial portions of the Software.</p>
+            <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+            EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+            MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+            IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+            CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+            TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+            SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+          </details>
+          <p><strong>Solar Icon Set</strong> by 480 Design — the play button.<br />
+          Used under the Creative Commons Attribution 4.0 International licence
+          (CC BY 4.0).<br />
+          <a href="https://github.com/480-Design/Solar-Icon-Set" rel="noopener" target="_blank">github.com/480-Design/Solar-Icon-Set</a>
+          · <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener" target="_blank">Licence</a></p>
+        `,
+      },
+      {
+        id: 'typefaces',
+        heading: 'Typefaces',
+        body: `
+          <p>All four are used under the
+          <a href="https://openfontlicense.org/open-font-license-official-text/" rel="noopener" target="_blank">SIL Open Font License, Version 1.1</a>.</p>
+          <ul>
+            <li><strong>Fraunces</strong> — Copyright 2018 The Fraunces Project
+            Authors
+            (<a href="https://github.com/undercasetype/Fraunces" rel="noopener" target="_blank">github.com/undercasetype/Fraunces</a>)</li>
+            <li><strong>Hanken Grotesk</strong> — Copyright 2021 The Hanken Grotesk
+            Project Authors
+            (<a href="https://github.com/marcologous/hanken-grotesk" rel="noopener" target="_blank">github.com/marcologous/hanken-grotesk</a>)</li>
+            <li><strong>DM Mono</strong> — Copyright 2020 The DM Mono Project Authors
+            (<a href="https://github.com/googlefonts/dm-mono" rel="noopener" target="_blank">github.com/googlefonts/dm-mono</a>)</li>
+            <li><strong>Grand Hotel</strong> — Copyright (c) 2012 Brian J.
+            Bonislawsky and Jim Lyles, DBA Astigmatic (AOETI), with Reserved Font
+            Name "Grand Hotel"</li>
+          </ul>
+        `,
+      },
+      {
+        id: 'films',
+        heading: 'Films',
+        body: `
+          <p>Tutorial films play through YouTube's embedded player. Each film is the
+          work of the channel that made it and belongs to that channel. We do not
+          own, host, or claim any rights in them.</p>
+          <p>Use of the player is subject to the
+          <a href="https://www.youtube.com/t/terms" rel="noopener" target="_blank">YouTube Terms of Service</a>.</p>
+        `,
+      },
+      {
+        id: 'patterns',
+        heading: 'Patterns',
+        body: `
+          <p>Every pattern in the Crochet Genie catalogue is our own original work.
+          None of it is adapted from another designer's pattern.</p>
+        `,
+      },
+      {
+        id: 'contact',
+        heading: 'Corrections',
+        body: `
+          <p>If something here is attributed wrongly, or is missing, tell us at
+          ${mailto} and we will fix it.</p>
         `,
       },
     ],
