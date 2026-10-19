@@ -17,6 +17,8 @@ const DATA_CONTACT_ROLE = 'Founder';
 const mailto = `<a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>`;
 
 const LAST_UPDATED = '26 August 2026';
+// Privacy moves on its own schedule — analytics disclosure, October 2026.
+const PRIVACY_LAST_UPDATED = '19 October 2026';
 
 export const legalPages = {
   terms: {
@@ -183,8 +185,8 @@ export const legalPages = {
     title: 'Privacy Policy',
     metaTitle: 'Crochet Genie — Privacy Policy',
     metaDescription:
-      'Crochet Genie has no analytics, no crash reporting, no advertising and no tracking. Your projects stay on your phone. Patterns you import go to our service and on to the Google Gemini API — here is exactly what happens.',
-    lastUpdated: LAST_UPDATED,
+      'Crochet Genie uses Google Analytics for Firebase and PostHog to learn which features people use — never for advertising. Your projects stay on your phone. Patterns you import go to our service and on to the Google Gemini API — here is exactly what happens.',
+    lastUpdated: PRIVACY_LAST_UPDATED,
     supportEmail: SUPPORT_EMAIL,
     siblings: [
       { href: '/crochet-genie/terms', label: 'Terms of Use' },
@@ -197,10 +199,11 @@ export const legalPages = {
         id: 'short-version',
         heading: 'The short version',
         body: `
-          <p>Crochet Genie has no analytics, no crash reporting, no advertising, no
-          tracking and no third-party SDKs of any kind. Your projects, counts and
-          patterns live on your phone and nowhere else. You have no account on any
-          server of ours, because we do not run one.</p>
+          <p>Crochet Genie uses two analytics services to learn which features
+          people use: Google Analytics (through Firebase) and PostHog. Neither is
+          used for advertising, and neither tracks you across other apps or websites.
+          Your projects never leave your phone. Signing in never leaves your phone
+          either.</p>
           <p>Two things do leave your phone. A pattern you ask us to
           <a href="#importing">import</a>, and — while you are signed in — an
           anonymous identifier that stops one person running thousands of imports.
@@ -322,16 +325,48 @@ export const legalPages = {
         `,
       },
       {
+        id: 'analytics',
+        heading: 'Analytics',
+        body: `
+          <p>We use two services to understand how the app is used, so we can fix
+          what is confusing and build what is missing.</p>
+          <p><strong>Google Analytics for Firebase</strong> records app events, such
+          as "a pattern was saved", "the Row Counter was opened", "an import failed"
+          or "the Genie+ screen was shown". Each event carries only fixed labels and
+          counts: which plan was picked, how many stitches were counted in a sitting,
+          how long a tutorial video played. Events never contain your name, your
+          email address, the text of a pattern, or any photo or file you import.
+          Google works out an approximate location (country or region) from your IP
+          address. Each install gets a random app ID. It is not linked to your
+          account, and we do not use the advertising identifier (IDFA).</p>
+          <p><strong>PostHog</strong> records session replays: a moving picture of
+          the screens you move through and where you tap, so we can see where people
+          get stuck. Every piece of text and every image is masked before anything is
+          sent, so a replay shows the shape of the screen, not what was on it.
+          Network requests are not recorded. Each install gets a random ID, which is
+          not linked to your account.</p>
+          <p>Neither service is used for advertising, and neither data set is sold or
+          shared with anyone else. We do not show the App Tracking Transparency
+          prompt because we do not track you as Apple defines it.</p>
+          <p>Retention: Google Analytics keeps event data for 14 months and PostHog
+          keeps replays for 30 days.</p>
+          <p>Google's privacy policy:
+          <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">https://policies.google.com/privacy</a><br />
+          PostHog's privacy policy:
+          <a href="https://posthog.com/privacy" rel="noopener" target="_blank">https://posthog.com/privacy</a></p>
+        `,
+      },
+      {
         id: 'what-we-do-not-do',
         heading: 'What we do not do',
         body: `
           <ul>
-            <li><strong>No analytics or telemetry.</strong> The app has no
-            third-party packages at all — not Firebase, not Clarity, not Sentry,
-            none.</li>
-            <li><strong>No crash reporting.</strong> If the app falls over, your
-            phone does not tell us about it.</li>
-            <li><strong>No advertising</strong>, and no advertising identifier.</li>
+            <li><strong>No advertising analytics.</strong> Our analytics
+            (<a href="#analytics">see above</a>) count how features are used. They
+            are never used for ads, never linked to your account, and never contain
+            your patterns, photos or contact details.</li>
+            <li><strong>No advertising.</strong> The app does not access the
+            advertising identifier.</li>
             <li><strong>No tracking</strong> across other apps or websites.</li>
             <li><strong>No selling or sharing</strong> of your data with anyone
             beyond the services named on this page.</li>
@@ -347,6 +382,9 @@ export const legalPages = {
           from the device: every project and the counts inside it, every imported
           pattern and its thumbnail, every saved pattern, and every preference. It
           signs you out at the same time.</p>
+          <p>Analytics data is tied to a random ID on this install, not to you.
+          Deleting the app ends collection and the ID with it. If you want that data
+          removed sooner, write to us at the address below.</p>
           <p>Because no account record exists on any server of ours, that is the
           entire deletion. There is nothing held elsewhere for us to go and remove.</p>
           <p>One thing is separate, and only you can do it: revoking the app's Sign in
@@ -360,8 +398,10 @@ export const legalPages = {
         heading: 'Your rights',
         body: `
           <p>Depending on where you live, you may have the right to see, correct,
-          export or delete the data we hold about you. In practice we hold almost
-          none — but write to ${mailto} and we will answer within 30 days.</p>
+          export or delete the data we hold about you. In practice we hold very
+          little: anonymous usage events and masked session replays, described under
+          <a href="#analytics">Analytics</a> — but write to ${mailto} and we will
+          answer within 30 days.</p>
         `,
       },
       {
