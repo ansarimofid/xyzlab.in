@@ -242,7 +242,7 @@ export const legalPages = {
           <p>Crochet Genie uses two analytics services to learn which features
           people use: Google Analytics (through Firebase) and PostHog. Neither is
           used for advertising, and neither tracks you across other apps or websites.
-          Your projects never leave your phone. Signing in never leaves your phone
+          Your projects never leave your phone. Your name and email never leave it
           either.</p>
           <p>Two things do leave your phone. A pattern you ask us to
           <a href="#importing">import</a>, and — while you are signed in — an
