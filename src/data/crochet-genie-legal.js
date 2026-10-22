@@ -16,9 +16,10 @@ const DATA_CONTACT_ROLE = 'Founder';
 
 const mailto = `<a href="mailto:${SUPPORT_EMAIL}">${SUPPORT_EMAIL}</a>`;
 
-const LAST_UPDATED = '26 August 2026';
-// Privacy moves on its own schedule — analytics disclosure, October 2026.
-const PRIVACY_LAST_UPDATED = '19 October 2026';
+// Each page is dated independently; they do not change together.
+const TERMS_LAST_UPDATED = '22 October 2026';
+const PRIVACY_LAST_UPDATED = '22 October 2026';
+const CREDITS_LAST_UPDATED = '26 August 2026';
 
 export const legalPages = {
   terms: {
@@ -26,7 +27,7 @@ export const legalPages = {
     metaTitle: 'Crochet Genie — Terms of Use',
     metaDescription:
       'The terms you agree to when you use Crochet Genie: what you may do with the app, what you promise about the patterns you import, and what we do not promise back.',
-    lastUpdated: LAST_UPDATED,
+    lastUpdated: TERMS_LAST_UPDATED,
     supportEmail: SUPPORT_EMAIL,
     siblings: [
       { href: '/crochet-genie/privacy', label: 'Privacy Policy' },
@@ -68,11 +69,48 @@ export const legalPages = {
         heading: 'Your account',
         body: `
           <p>Most of Crochet Genie works without an account. You can sign in with
-          Apple, and if you do, that sign-in stays on your device. The
+          Apple or with Google, and if you do, that sign-in stays on your device. The
           <a href="/crochet-genie/privacy#signing-in">Privacy Policy</a> explains
-          exactly what that means.</p>
-          <p>You can clear your account and your projects from Settings inside the
-          app. It is immediate and it cannot be undone.</p>
+          exactly what that means. You do need to be signed in before buying
+          <a href="#genie-plus">Genie+</a>.</p>
+          <p>You can clear your account and your projects from Settings → Danger
+          zone inside the app. It is immediate and it cannot be undone.</p>
+        `,
+      },
+      {
+        id: 'genie-plus',
+        heading: 'Genie+ and subscriptions',
+        body: `
+          <p>Genie+ is our paid plan. It removes the limits of the free plan: one
+          pattern import a calendar month, three unfinished projects at a time, and
+          three saved patterns.</p>
+          <p>There are three ways to buy it, all through the App Store:</p>
+          <ul>
+            <li><strong>Yearly</strong> — $19.99 a year in the US, starting with a
+            three-day free trial.</li>
+            <li><strong>Monthly</strong> — $2.99 a month in the US, starting with a
+            three-day free trial.</li>
+            <li><strong>Genie+ Lifetime</strong> — $49.99, a one-off purchase. It
+            does not renew.</li>
+          </ul>
+          <p>Prices differ by country. The app shows you the price that applies to
+          you before you buy. You need to be signed in to buy.</p>
+          <p>Payment is charged to your Apple Account when you confirm the purchase,
+          or when the free trial ends.</p>
+          <p>A subscription renews automatically unless you cancel it at least 24
+          hours before the current period ends. Your account is charged for the
+          renewal within the 24 hours before the period ends.</p>
+          <p>The free trial runs three days, and there is one per eligible Apple
+          Account. Where it applies, any unused part of a trial is forfeited when
+          you buy a subscription.</p>
+          <p>Manage or cancel in iOS Settings → your name → Subscriptions. Deleting
+          the app does not cancel a subscription.</p>
+          <p>Refunds are Apple's to give, not ours. Ask at
+          <a href="https://reportaproblem.apple.com" rel="noopener" target="_blank">reportaproblem.apple.com</a>.</p>
+          <p>We may change what the free plan includes, and what Genie+ includes.</p>
+          <p>Apple's
+          <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" rel="noopener" target="_blank">Licensed Application End User License Agreement</a>
+          applies to Crochet Genie alongside these terms.</p>
         `,
       },
       {
@@ -104,6 +142,8 @@ export const legalPages = {
         id: 'limits',
         heading: 'Limits',
         body: `
+          <p>The free plan has limits — on imports, on unfinished projects, and on
+          saved patterns. <a href="#genie-plus">Genie+</a> removes them.</p>
           <p>Importing costs us money per pattern, so we limit how many imports a
           person can run, and we may change that limit without notice.</p>
         `,
@@ -232,20 +272,36 @@ export const legalPages = {
         id: 'signing-in',
         heading: 'Signing in',
         body: `
-          <p>You can sign in with Apple. It is the only way to sign in — no Google
-          sign-in, no password, no emailed link — and most of the app works without
-          signing in at all.</p>
-          <p>Apple hands the app two different things, and they are worth separating.</p>
-          <p><strong>Your name and email address</strong> — or Apple's private relay
-          address, if you chose to hide your email — go into your device's Keychain
-          and <strong>stay there</strong>. We have no copy, because we have no server
+          <p>You can sign in with Apple or with Google. Most of the app works
+          without signing in at all, though you do need an account before buying
+          <a href="#genie-plus">Genie+</a>.</p>
+          <p><strong>Sign in with Apple.</strong> Apple hands the app two different
+          things, and they are worth separating.</p>
+          <p>Your name and email address — or Apple's private relay address, if you
+          chose to hide your email — go into your device's Keychain and
+          <strong>stay there</strong>. We have no copy, because we have no server
           that stores accounts.</p>
-          <p><strong>A subject identifier</strong>, which is an opaque string Apple
-          uses to mean "you" to this app and to no other app. While you are signed in,
-          import requests carry it in a header called <code>X-User</code>. We use it
-          for exactly one thing: counting imports, so a single person cannot exhaust
-          the service for everyone else. It is not stored on our server. It is never
-          used for advertising, and never to follow you anywhere.</p>
+          <p>Apple also gives an account identifier: an opaque string it uses to mean
+          "you" to this app and to no other app.</p>
+          <p><strong>Sign in with Google.</strong> The sign-in itself happens on
+          Google's own web page rather than on a screen of ours, so your Google
+          password never passes through the app.</p>
+          <p>We ask Google for three things and nothing more —
+          <code>openid</code>, <code>email</code> and <code>profile</code> — which
+          gives the app your name, your email address and Google's opaque account ID
+          for you (its "sub"). We do not ask for, and cannot reach, your Gmail, your
+          Drive, your contacts, your photos or your YouTube account.</p>
+          <p>Those three go into your device's Keychain exactly as the Apple ones do,
+          and stay there. We have no copy.</p>
+          <p>You can revoke the app's access whenever you like, at
+          <a href="https://myaccount.google.com/" rel="noopener" target="_blank">myaccount.google.com</a>
+          → Security → Your connections to third-party apps &amp; services.</p>
+          <p><strong>The account identifier, whichever you signed in with.</strong>
+          While you are signed in, import requests carry that opaque ID — Apple's or
+          Google's — in a header called <code>X-User</code>. We use it for exactly
+          one thing: counting imports, so a single person cannot exhaust the service
+          for everyone else. It is not stored on our server. It is never used for
+          advertising, and never to follow you anywhere.</p>
           <p><a href="#deleting-everything">Deleting everything</a> explains how to
           undo all of this.</p>
         `,
@@ -296,6 +352,45 @@ export const legalPages = {
         `,
       },
       {
+        id: 'genie-plus',
+        heading: 'Genie+ purchases',
+        body: `
+          <p>Genie+ is sold through the App Store. There is a yearly subscription
+          ($19.99 a year in the US) and a monthly one ($2.99 a month in the US),
+          each starting with a three-day free trial, and Genie+ Lifetime ($49.99),
+          a one-off purchase that never renews. Prices differ by country, and the
+          app shows you yours before you buy.</p>
+          <p>The free plan allows one pattern import a calendar month, three
+          unfinished projects at a time, and three saved patterns. Genie+ removes
+          all three limits. You need to be signed in before you can buy.</p>
+          <p><strong>We never see your payment details.</strong> Apple takes the
+          payment. No card number, no billing address, nothing of that kind passes
+          through the app or reaches us. Whether you hold Genie+ is checked on the
+          device itself, through Apple's StoreKit.</p>
+          <p>"Restore Purchases" sits on the paywall and in Settings, for a new
+          device or a reinstall.</p>
+          <p>Our analytics record that the paywall was shown and which plan was
+          picked. They never record anything about the payment.</p>
+          <p>To manage or cancel a subscription: iOS Settings → your name →
+          Subscriptions.</p>
+        `,
+      },
+      {
+        id: 'counting-by-voice',
+        heading: 'Counting by voice',
+        body: `
+          <p>Counting by voice is optional, and off until you turn it on. When it is
+          on and a round counter is open, the app listens for two words: "next" and
+          "back". Nothing else.</p>
+          <p><strong>All of it happens on your device.</strong> Speech recognition
+          runs locally — SpeechAnalyzer on iOS 26, and Apple's on-device recogniser
+          before that. No audio is recorded. No transcript is kept. Nothing is sent
+          to us, to Apple, or to anyone else.</p>
+          <p>You can withdraw microphone access at any time in iOS Settings →
+          Crochet Genie.</p>
+        `,
+      },
+      {
         id: 'videos',
         heading: 'Videos',
         body: `
@@ -309,9 +404,13 @@ export const legalPages = {
           with that.</p>
           <p>Google's privacy policy:
           <a href="https://policies.google.com/privacy" rel="noopener" target="_blank">https://policies.google.com/privacy</a>.</p>
-          <p>We do not ask for, and never receive, access to your YouTube account.
-          Nothing in Crochet Genie signs you in to Google or reads anything from your
-          Google account, so there is no permission of ours for you to revoke there.</p>
+          <p>Watching a video here never signs you in to Google. The player does
+          not know who you are, and we do not ask for or receive access to your
+          YouTube account.</p>
+          <p>If you chose <a href="#signing-in">Sign in with Google</a>, that signs
+          you in to Crochet Genie and nothing else. It gives us no access to YouTube
+          — not your history, not your subscriptions, not your comments — and it is
+          not connected to the player in any way.</p>
         `,
       },
       {
@@ -378,18 +477,21 @@ export const legalPages = {
         id: 'deleting-everything',
         heading: 'Deleting everything',
         body: `
-          <p>Settings → "Delete account and everything in it" removes all of this
-          from the device: every project and the counts inside it, every imported
-          pattern and its thumbnail, every saved pattern, and every preference. It
-          signs you out at the same time.</p>
+          <p>Settings → Danger zone → "Delete account and everything in it"
+          removes all of this from the device: every project and the counts inside
+          it, every imported pattern and its thumbnail, every saved pattern, and
+          every preference. It signs you out at the same time.</p>
           <p>Analytics data is tied to a random ID on this install, not to you.
           Deleting the app ends collection and the ID with it. If you want that data
           removed sooner, write to us at the address below.</p>
           <p>Because no account record exists on any server of ours, that is the
           entire deletion. There is nothing held elsewhere for us to go and remove.</p>
-          <p>One thing is separate, and only you can do it: revoking the app's Sign in
-          with Apple access, under iOS Settings → Apple Account → Sign in with
-          Apple.</p>
+          <p>One thing is separate, and only you can do it: revoking the app's
+          sign-in access.</p>
+          <p>For Apple, that is iOS Settings → Apple Account → Sign in with Apple.
+          For Google, it is
+          <a href="https://myaccount.google.com/" rel="noopener" target="_blank">myaccount.google.com</a>
+          → Security → Your connections to third-party apps &amp; services.</p>
           <p>You can also write to ${mailto}.</p>
         `,
       },
@@ -433,7 +535,7 @@ export const legalPages = {
     metaTitle: 'Crochet Genie — Credits',
     metaDescription:
       'Attribution for the open-source icons and typefaces Crochet Genie uses, for the tutorial films, and for the patterns in the catalogue.',
-    lastUpdated: LAST_UPDATED,
+    lastUpdated: CREDITS_LAST_UPDATED,
     supportEmail: SUPPORT_EMAIL,
     siblings: [
       { href: '/crochet-genie/terms', label: 'Terms of Use' },
